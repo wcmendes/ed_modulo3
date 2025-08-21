@@ -1,17 +1,15 @@
-# Estrutura de Dados - Módulo III
-
-## Simulador Interativo de Estruturas Lineares Dinâmicas
+# Estrutura de Dados - Módulo III: Listas, Pilhas e Filas
 
 Este projeto apresenta um simulador web interativo para o **Módulo III** da disciplina de Estrutura de Dados, focado em **Estruturas Lineares Dinâmicas: Listas, Pilhas e Filas**.
 
-### 🎯 Objetivos do Módulo
+## 📌 Objetivo
 
 - Compreender o funcionamento das estruturas de dados lineares dinâmicas
 - Implementar e manipular listas encadeadas, pilhas e filas
 - Aplicar os conceitos LIFO (Last In, First Out) e FIFO (First In, First Out)
 - Desenvolver habilidades práticas com operações fundamentais dessas estruturas
 
-### 🚀 Funcionalidades do Simulador
+## 🧩 Funcionalidades
 
 #### 📚 Painel Teórico
 - Conceitos fundamentais sobre Listas, Pilhas e Filas
@@ -39,22 +37,14 @@ Este projeto apresenta um simulador web interativo para o **Módulo III** da dis
 - **Visualização**: Representação horizontal com indicadores de início e fim
 - **Exemplos de código**: Implementações completas com explicações
 
-### 🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
-- **HTML5**: Estrutura semântica e acessível
-- **CSS3**: Design responsivo com gradientes e animações
-- **JavaScript**: Lógica interativa e manipulação do DOM
-- **Font Awesome**: Ícones vetoriais para melhor UX
+- HTML5
+- CSS3 (com design responsivo e moderno)
+- JavaScript: Lógica interativa e manipulação do DOM
+- Font Awesome: Ícones vetoriais para melhor UX
 
-### 🎨 Características do Design
-
-- **Interface Moderna**: Design com gradientes e efeitos visuais
-- **Responsivo**: Adaptável para desktop, tablet e mobile
-- **Animações**: Transições suaves e feedback visual
-- **Acessibilidade**: Cores contrastantes e navegação intuitiva
-- **Persistência**: Dados salvos automaticamente no localStorage
-
-### 📖 Como Usar
+## 🚀 Como Acessar/Executar
 
 1. **Acesse o simulador**: [https://wcmendes.github.io/ed_modulo3/](https://wcmendes.github.io/ed_modulo3/)
 
@@ -69,45 +59,17 @@ Este projeto apresenta um simulador web interativo para o **Módulo III** da dis
 
 5. **Visualize as Operações**: Observe as animações e feedback visual das operações
 
-### 🔧 Funcionalidades Avançadas
+## 🎓 Público-Alvo
 
-- **Validação de Entrada**: Verificação de dados antes das operações
-- **Mensagens Informativas**: Feedback em tempo real das ações
-- **Destaque Visual**: Elementos são destacados durante buscas
-- **Persistência Local**: Estado das estruturas mantido entre sessões
-- **Responsividade**: Layout adaptativo para diferentes dispositivos
+Estudantes do curso de Análise e Desenvolvimento de Sistemas, especialmente nas fases introdutórias de estrutura de dados e lógica de programação.
 
-### 📚 Conteúdo Educacional
-
-O simulador aborda os seguintes tópicos:
-
-- **Listas Encadeadas**: Estrutura, nós, ponteiros e operações
-- **Pilhas**: Princípio LIFO, aplicações e implementação
-- **Filas**: Princípio FIFO, filas circulares e aplicações práticas
-- **Complexidade**: Análise de tempo das operações
-- **Aplicações Práticas**: Casos de uso no mundo real
-
-### 🎓 Para Educadores
-
-Este simulador é ideal para:
-- Aulas práticas de Estrutura de Dados
-- Demonstrações interativas dos conceitos
-- Exercícios práticos com feedback imediato
-- Complemento ao material teórico tradicional
-
-### 📱 QR Code para Acesso Rápido
-
-![QR Code](assets/qrcode.png)
-
-Escaneie o QR Code acima para acessar rapidamente o simulador em dispositivos móveis.
-
-### 🤝 Contribuições
+## 🤝 Contribuições
 
 Este projeto foi desenvolvido como material educacional para a disciplina de Estrutura de Dados. Sugestões e melhorias são sempre bem-vindas.
 
-### 📄 Licença
+## 📄 Licença e Uso
 
-Material educacional desenvolvido para fins acadêmicos.
+Este material educacional é desenvolvido para fins acadêmicos. É permitida a reprodução, adaptação e distribuição, desde que seja **dado o devido crédito ao autor**.
 
 ---
 
@@ -117,9 +79,9 @@ Material educacional desenvolvido para fins acadêmicos.
 
 ---
 
-### 🔗 Links Relacionados
+### 🔗 Links dos Repositórios
 
-- [Módulo I - Estruturas Básicas](https://wcmendes.github.io/ed_modulo1/)
-- [Módulo II - Registros e Vetores](https://wcmendes.github.io/ed_modulo2/)
-- [Módulo III - Estruturas Lineares](https://wcmendes.github.io/ed_modulo3/)
-
+- [Módulo I - Estruturas Básicas](https://github.com/wcmendes/ed_modulo1)
+- [Módulo II - Registros e Vetores](https://github.com/wcmendes/ed_modulo2)
+- [Módulo III - Estruturas Lineares](https://github.com/wcmendes/ed_modulo3)
+- [Torre de Hanoi](https://github.com/wcmendes/hanoi)
