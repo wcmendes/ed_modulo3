@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de Dados - Módulo III</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-layer-group"></i> Estrutura de Dados - Módulo III</h1>
+            <p>Estruturas Lineares Dinâmicas: Listas, Pilhas e Filas</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Painel Teórico -->
+            <section class="panel-section">
+                <div class="panel-header">
+                    <h2><i class="fas fa-book"></i> Painel Teórico</h2>
+                </div>
+                <div class="panel-content">
+                    <div class="theory-grid">
+                        <div class="theory-card">
+                            <h3><i class="fas fa-list"></i> Listas Simples</h3>
+                            <p>Estruturas de dados lineares onde os elementos são organizados sequencialmente. Cada nó possui um ponteiro para o próximo elemento da lista.</p>
+                            <div class="features">
+                                <span class="feature-tag">Inserção flexível</span>
+                                <span class="feature-tag">Acesso sequencial</span>
+                                <span class="feature-tag">Tamanho dinâmico</span>
+                            </div>
+                        </div>
+                        <div class="theory-card">
+                            <h3><i class="fas fa-exchange-alt"></i> Listas Duplas</h3>
+                            <p>Cada nó possui dois ponteiros: um para o próximo elemento e outro para o anterior. Permite navegação bidirecional e operações mais eficientes.</p>
+                            <div class="features">
+                                <span class="feature-tag">Navegação bidirecional</span>
+                                <span class="feature-tag">Inserção/remoção eficiente</span>
+                                <span class="feature-tag">Maior flexibilidade</span>
+                            </div>
+                        </div>
+                        <div class="theory-card">
+                            <h3><i class="fas fa-sync-alt"></i> Listas Circulares</h3>
+                            <p>O último elemento aponta para o primeiro, formando um ciclo. Útil para aplicações que requerem acesso cíclico aos dados.</p>
+                            <div class="features">
+                                <span class="feature-tag">Acesso cíclico</span>
+                                <span class="feature-tag">Sem início/fim</span>
+                                <span class="feature-tag">Aplicações especiais</span>
+                            </div>
+                        </div>
+                        <div class="theory-card">
+                            <h3><i class="fas fa-layer-group"></i> Pilhas (LIFO)</h3>
+                            <p>Estrutura que segue o princípio Last In, First Out. O último elemento inserido é o primeiro a ser removido. Operações principais: push (inserir) e pop (remover).</p>
+                            <div class="features">
+                                <span class="feature-tag">LIFO</span>
+                                <span class="feature-tag">Push/Pop</span>
+                                <span class="feature-tag">Recursão</span>
+                            </div>
+                        </div>
+                        <div class="theory-card">
+                            <h3><i class="fas fa-arrow-right"></i> Filas (FIFO)</h3>
+                            <p>Estrutura que segue o princípio First In, First Out. O primeiro elemento inserido é o primeiro a ser removido. Operações principais: enqueue (inserir) e dequeue (remover).</p>
+                            <div class="features">
+                                <span class="feature-tag">FIFO</span>
+                                <span class="feature-tag">Enqueue/Dequeue</span>
+                                <span class="feature-tag">Processamento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulador de Listas -->
+            <section class="simulator-section">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-list"></i> A. Simulador de Listas</h2>
+                </div>
+                <div class="simulator-content">
+                    <div class="controls-panel">
+                        <div class="input-group">
+                            <label for="listValue">Valor:</label>
+                            <input type="text" id="listValue" placeholder="Digite um valor">
+                        </div>
+                        <div class="input-group">
+                            <label for="listPosition">Posição (opcional):</label>
+                            <input type="number" id="listPosition" placeholder="Posição" min="0">
+                        </div>
+                        <div class="button-group">
+                            <button onclick="insertInList()" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Inserir
+                            </button>
+                            <button onclick="removeFromList()" class="btn btn-danger">
+                                <i class="fas fa-minus"></i> Remover
+                            </button>
+                            <button onclick="searchInList()" class="btn btn-info">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                            <button onclick="clearList()" class="btn btn-warning">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="visualization-panel">
+                        <div class="structure-display">
+                            <h4>Lista Encadeada:</h4>
+                            <div id="listDisplay" class="list-display">
+                                <div class="empty-message">Lista vazia</div>
+                            </div>
+                        </div>
+                        <div class="code-examples">
+                            <div class="code-tabs">
+                                <button class="tab-btn active" onclick="showCode('list', 'pseudo')">Pseudocódigo</button>
+                                <button class="tab-btn" onclick="showCode('list', 'python')">Python</button>
+                                <button class="tab-btn" onclick="showCode('list', 'java')">Java</button>
+                                <button class="tab-btn" onclick="showCode('list', 'c')">C</button>
+                            </div>
+                            <div class="code-content">
+                                <pre id="listCodePseudo" class="code-block active">
+// Estrutura de um nó da lista
+estrutura No:
+    valor: tipo_dado
+    proximo: ponteiro para No
+
+// Operações básicas
+função inserir(lista, valor, posicao):
+    novo_no = criar_no(valor)
+    se posicao == 0:
+        novo_no.proximo = lista.inicio
+        lista.inicio = novo_no
+    senão:
+        atual = lista.inicio
+        para i de 0 até posicao-2:
+            atual = atual.proximo
+        novo_no.proximo = atual.proximo
+        atual.proximo = novo_no
+                                </pre>
+                                <pre id="listCodePython" class="code-block">
+class No:
+    def __init__(self, valor):
+        self.valor = valor
+        self.proximo = None
+
+class Lista:
+    def __init__(self):
+        self.inicio = None
+    
+    def inserir(self, valor, posicao=None):
+        novo_no = No(valor)
+        if posicao == 0 or self.inicio is None:
+            novo_no.proximo = self.inicio
+            self.inicio = novo_no
+        else:
+            atual = self.inicio
+            for i in range(posicao - 1):
+                if atual.proximo:
+                    atual = atual.proximo
+            novo_no.proximo = atual.proximo
+            atual.proximo = novo_no
+                                </pre>
+                                <pre id="listCodeJava" class="code-block">
+class No {
+    int valor;
+    No proximo;
+    
+    public No(int valor) {
+        this.valor = valor;
+        this.proximo = null;
+    }
+}
+
+class Lista {
+    private No inicio;
+    
+    public void inserir(int valor, int posicao) {
+        No novoNo = new No(valor);
+        if (posicao == 0 || inicio == null) {
+            novoNo.proximo = inicio;
+            inicio = novoNo;
+        } else {
+            No atual = inicio;
+            for (int i = 0; i < posicao - 1; i++) {
+                if (atual.proximo != null) {
+                    atual = atual.proximo;
+                }
+            }
+            novoNo.proximo = atual.proximo;
+            atual.proximo = novoNo;
+        }
+    }
+}
+                                </pre>
+                                <pre id="listCodeC" class="code-block">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct No {
+    int valor;
+    struct No* proximo;
+} No;
+
+typedef struct {
+    No* inicio;
+} Lista;
+
+void inserir(Lista* lista, int valor, int posicao) {
+    No* novo_no = (No*)malloc(sizeof(No));
+    novo_no->valor = valor;
+    
+    if (posicao == 0 || lista->inicio == NULL) {
+        novo_no->proximo = lista->inicio;
+        lista->inicio = novo_no;
+    } else {
+        No* atual = lista->inicio;
+        for (int i = 0; i < posicao - 1; i++) {
+            if (atual->proximo != NULL) {
+                atual = atual->proximo;
+            }
+        }
+        novo_no->proximo = atual->proximo;
+        atual->proximo = novo_no;
+    }
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulador de Listas Duplas -->
+            <section class="simulator-section">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-exchange-alt"></i> B. Simulador de Listas Duplas</h2>
+                </div>
+                <div class="simulator-content">
+                    <div class="controls-panel">
+                        <div class="input-group">
+                            <label for="doubleListValue">Valor:</label>
+                            <input type="text" id="doubleListValue" placeholder="Digite um valor">
+                        </div>
+                        <div class="input-group">
+                            <label for="doubleListPosition">Posição (opcional):</label>
+                            <input type="number" id="doubleListPosition" placeholder="Posição" min="0">
+                        </div>
+                        <div class="button-group">
+                            <button onclick="insertInDoubleList()" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Inserir
+                            </button>
+                            <button onclick="removeFromDoubleList()" class="btn btn-danger">
+                                <i class="fas fa-minus"></i> Remover
+                            </button>
+                            <button onclick="navigateDoubleList('forward')" class="btn btn-info">
+                                <i class="fas fa-arrow-right"></i> Avançar
+                            </button>
+                            <button onclick="navigateDoubleList('backward')" class="btn btn-info">
+                                <i class="fas fa-arrow-left"></i> Voltar
+                            </button>
+                            <button onclick="clearDoubleList()" class="btn btn-warning">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="visualization-panel">
+                        <div class="structure-display">
+                            <h4>Lista Duplamente Encadeada:</h4>
+                            <div id="doubleListDisplay" class="double-list-display">
+                                <div class="empty-message">Lista dupla vazia</div>
+                            </div>
+                            <div class="navigation-info">
+                                <p><strong>Conceito:</strong> Cada nó possui ponteiros para o próximo E para o anterior, permitindo navegação bidirecional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulador de Listas Circulares -->
+            <section class="simulator-section">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-sync-alt"></i> C. Simulador de Listas Circulares</h2>
+                </div>
+                <div class="simulator-content">
+                    <div class="controls-panel">
+                        <div class="input-group">
+                            <label for="circularListValue">Valor:</label>
+                            <input type="text" id="circularListValue" placeholder="Digite um valor">
+                        </div>
+                        <div class="button-group">
+                            <button onclick="insertInCircularList()" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Inserir
+                            </button>
+                            <button onclick="removeFromCircularList()" class="btn btn-danger">
+                                <i class="fas fa-minus"></i> Remover
+                            </button>
+                            <button onclick="rotateCircularList()" class="btn btn-info">
+                                <i class="fas fa-sync"></i> Rotacionar
+                            </button>
+                            <button onclick="clearCircularList()" class="btn btn-warning">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="visualization-panel">
+                        <div class="structure-display">
+                            <h4>Lista Circular:</h4>
+                            <div id="circularListDisplay" class="circular-list-display">
+                                <div class="empty-message">Lista circular vazia</div>
+                            </div>
+                            <div class="navigation-info">
+                                <p><strong>Conceito:</strong> O último elemento aponta para o primeiro, formando um ciclo contínuo sem início ou fim definido.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulador de Pilhas -->
+            <section class="simulator-section">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-layer-group"></i> D. Simulador de Pilhas</h2>
+                </div>
+                <div class="simulator-content">
+                    <div class="controls-panel">
+                        <div class="input-group">
+                            <label for="stackValue">Valor:</label>
+                            <input type="text" id="stackValue" placeholder="Digite um valor">
+                        </div>
+                        <div class="button-group">
+                            <button onclick="pushToStack()" class="btn btn-primary">
+                                <i class="fas fa-arrow-up"></i> Push
+                            </button>
+                            <button onclick="popFromStack()" class="btn btn-danger">
+                                <i class="fas fa-arrow-down"></i> Pop
+                            </button>
+                            <button onclick="peekStack()" class="btn btn-info">
+                                <i class="fas fa-eye"></i> Peek
+                            </button>
+                            <button onclick="clearStack()" class="btn btn-warning">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="visualization-panel">
+                        <div class="structure-display">
+                            <h4>Pilha (LIFO):</h4>
+                            <div id="stackDisplay" class="stack-display">
+                                <div class="empty-message">Pilha vazia</div>
+                            </div>
+                        </div>
+                        <div class="code-examples">
+                            <div class="code-tabs">
+                                <button class="tab-btn active" onclick="showCode('stack', 'pseudo')">Pseudocódigo</button>
+                                <button class="tab-btn" onclick="showCode('stack', 'python')">Python</button>
+                                <button class="tab-btn" onclick="showCode('stack', 'java')">Java</button>
+                                <button class="tab-btn" onclick="showCode('stack', 'c')">C</button>
+                            </div>
+                            <div class="code-content">
+                                <pre id="stackCodePseudo" class="code-block active">
+// Estrutura da pilha
+estrutura Pilha:
+    itens: array
+    topo: inteiro
+
+// Operações básicas
+função push(pilha, valor):
+    pilha.topo = pilha.topo + 1
+    pilha.itens[pilha.topo] = valor
+
+função pop(pilha):
+    se pilha.topo >= 0:
+        valor = pilha.itens[pilha.topo]
+        pilha.topo = pilha.topo - 1
+        retorne valor
+    senão:
+        retorne erro "Pilha vazia"
+
+função peek(pilha):
+    se pilha.topo >= 0:
+        retorne pilha.itens[pilha.topo]
+    senão:
+        retorne erro "Pilha vazia"
+                                </pre>
+                                <pre id="stackCodePython" class="code-block">
+class Pilha:
+    def __init__(self):
+        self.itens = []
+    
+    def push(self, valor):
+        self.itens.append(valor)
+    
+    def pop(self):
+        if not self.is_empty():
+            return self.itens.pop()
+        else:
+            raise Exception("Pilha vazia")
+    
+    def peek(self):
+        if not self.is_empty():
+            return self.itens[-1]
+        else:
+            raise Exception("Pilha vazia")
+    
+    def is_empty(self):
+        return len(self.itens) == 0
+    
+    def size(self):
+        return len(self.itens)
+                                </pre>
+                                <pre id="stackCodeJava" class="code-block">
+import java.util.ArrayList;
+import java.util.EmptyStackException;
+
+class Pilha {
+    private ArrayList&lt;Integer&gt; itens;
+    
+    public Pilha() {
+        this.itens = new ArrayList&lt;&gt;();
+    }
+    
+    public void push(int valor) {
+        itens.add(valor);
+    }
+    
+    public int pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return itens.remove(itens.size() - 1);
+    }
+    
+    public int peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return itens.get(itens.size() - 1);
+    }
+    
+    public boolean isEmpty() {
+        return itens.isEmpty();
+    }
+    
+    public int size() {
+        return itens.size();
+    }
+}
+                                </pre>
+                                <pre id="stackCodeC" class="code-block">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX_SIZE 100
+
+typedef struct {
+    int itens[MAX_SIZE];
+    int topo;
+} Pilha;
+
+void inicializar(Pilha* pilha) {
+    pilha->topo = -1;
+}
+
+void push(Pilha* pilha, int valor) {
+    if (pilha->topo < MAX_SIZE - 1) {
+        pilha->topo++;
+        pilha->itens[pilha->topo] = valor;
+    } else {
+        printf("Pilha cheia\n");
+    }
+}
+
+int pop(Pilha* pilha) {
+    if (pilha->topo >= 0) {
+        int valor = pilha->itens[pilha->topo];
+        pilha->topo--;
+        return valor;
+    } else {
+        printf("Pilha vazia\n");
+        return -1;
+    }
+}
+
+int peek(Pilha* pilha) {
+    if (pilha->topo >= 0) {
+        return pilha->itens[pilha->topo];
+    } else {
+        printf("Pilha vazia\n");
+        return -1;
+    }
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simulador de Filas -->
+            <section class="simulator-section">
+                <div class="simulator-header">
+                    <h2><i class="fas fa-arrow-right"></i> E. Simulador de Filas</h2>
+                </div>
+                <div class="simulator-content">
+                    <div class="controls-panel">
+                        <div class="input-group">
+                            <label for="queueValue">Valor:</label>
+                            <input type="text" id="queueValue" placeholder="Digite um valor">
+                        </div>
+                        <div class="button-group">
+                            <button onclick="enqueue()" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Enqueue
+                            </button>
+                            <button onclick="dequeue()" class="btn btn-danger">
+                                <i class="fas fa-minus"></i> Dequeue
+                            </button>
+                            <button onclick="frontQueue()" class="btn btn-info">
+                                <i class="fas fa-eye"></i> Front
+                            </button>
+                            <button onclick="clearQueue()" class="btn btn-warning">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="visualization-panel">
+                        <div class="structure-display">
+                            <h4>Fila (FIFO):</h4>
+                            <div id="queueDisplay" class="queue-display">
+                                <div class="empty-message">Fila vazia</div>
+                            </div>
+                        </div>
+                        <div class="code-examples">
+                            <div class="code-tabs">
+                                <button class="tab-btn active" onclick="showCode('queue', 'pseudo')">Pseudocódigo</button>
+                                <button class="tab-btn" onclick="showCode('queue', 'python')">Python</button>
+                                <button class="tab-btn" onclick="showCode('queue', 'java')">Java</button>
+                                <button class="tab-btn" onclick="showCode('queue', 'c')">C</button>
+                            </div>
+                            <div class="code-content">
+                                <pre id="queueCodePseudo" class="code-block active">
+// Estrutura da fila
+estrutura Fila:
+    itens: array
+    inicio: inteiro
+    fim: inteiro
+    tamanho: inteiro
+
+// Operações básicas
+função enqueue(fila, valor):
+    se fila.tamanho < MAX_SIZE:
+        fila.itens[fila.fim] = valor
+        fila.fim = (fila.fim + 1) % MAX_SIZE
+        fila.tamanho = fila.tamanho + 1
+    senão:
+        retorne erro "Fila cheia"
+
+função dequeue(fila):
+    se fila.tamanho > 0:
+        valor = fila.itens[fila.inicio]
+        fila.inicio = (fila.inicio + 1) % MAX_SIZE
+        fila.tamanho = fila.tamanho - 1
+        retorne valor
+    senão:
+        retorne erro "Fila vazia"
+                                </pre>
+                                <pre id="queueCodePython" class="code-block">
+from collections import deque
+
+class Fila:
+    def __init__(self):
+        self.itens = deque()
+    
+    def enqueue(self, valor):
+        self.itens.append(valor)
+    
+    def dequeue(self):
+        if not self.is_empty():
+            return self.itens.popleft()
+        else:
+            raise Exception("Fila vazia")
+    
+    def front(self):
+        if not self.is_empty():
+            return self.itens[0]
+        else:
+            raise Exception("Fila vazia")
+    
+    def is_empty(self):
+        return len(self.itens) == 0
+    
+    def size(self):
+        return len(self.itens)
+                                </pre>
+                                <pre id="queueCodeJava" class="code-block">
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.NoSuchElementException;
+
+class Fila {
+    private Queue&lt;Integer&gt; itens;
+    
+    public Fila() {
+        this.itens = new LinkedList&lt;&gt;();
+    }
+    
+    public void enqueue(int valor) {
+        itens.offer(valor);
+    }
+    
+    public int dequeue() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Fila vazia");
+        }
+        return itens.poll();
+    }
+    
+    public int front() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Fila vazia");
+        }
+        return itens.peek();
+    }
+    
+    public boolean isEmpty() {
+        return itens.isEmpty();
+    }
+    
+    public int size() {
+        return itens.size();
+    }
+}
+                                </pre>
+                                <pre id="queueCodeC" class="code-block">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX_SIZE 100
+
+typedef struct {
+    int itens[MAX_SIZE];
+    int inicio;
+    int fim;
+    int tamanho;
+} Fila;
+
+void inicializar(Fila* fila) {
+    fila->inicio = 0;
+    fila->fim = 0;
+    fila->tamanho = 0;
+}
+
+void enqueue(Fila* fila, int valor) {
+    if (fila->tamanho < MAX_SIZE) {
+        fila->itens[fila->fim] = valor;
+        fila->fim = (fila->fim + 1) % MAX_SIZE;
+        fila->tamanho++;
+    } else {
+        printf("Fila cheia\n");
+    }
+}
+
+int dequeue(Fila* fila) {
+    if (fila->tamanho > 0) {
+        int valor = fila->itens[fila->inicio];
+        fila->inicio = (fila->inicio + 1) % MAX_SIZE;
+        fila->tamanho--;
+        return valor;
+    } else {
+        printf("Fila vazia\n");
+        return -1;
+    }
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bibliografia -->
+            <section class="bibliography-section">
+                <div class="bibliography-header">
+                    <h2><i class="fas fa-book-open"></i> Bibliografia</h2>
+                </div>
+                <div class="bibliography-content">
+                    <div class="reference-list">
+                        <div class="reference-item">
+                            <strong>[1]</strong> UFSM. <em>Entendendo listas, pilhas e filas</em>. Disponível em: 
+                            <a href="https://www.ufsm.br/pet/sistemas-de-informacao/2020/04/01/entendendo-listas-pilhas-e-filas" target="_blank">
+                                https://www.ufsm.br/pet/sistemas-de-informacao/2020/04/01/entendendo-listas-pilhas-e-filas
+                            </a>. Acesso em: 7 fev. 2025.
+                        </div>
+                        <div class="reference-item">
+                            <strong>[2]</strong> UFCG. <em>Estruturas de Dados - Tipos de Coleções</em>. Disponível em: 
+                            <a href="http://www.dsc.ufcg.edu.br/~jacques/cursos/p2/html/ed/colecoes.htm" target="_blank">
+                                http://www.dsc.ufcg.edu.br/~jacques/cursos/p2/html/ed/colecoes.htm
+                            </a>. Acesso em: 7 fev. 2025.
+                        </div>
+                        <div class="reference-item">
+                            <strong>[3]</strong> RODRIGUES, Thiago Nascimento et al. <em>Estrutura de dados em Java</em> [recurso eletrônico]. 
+                            Revisão técnica: Ana Flavia Marinho de Lima Garrote. Porto Alegre: SAGAH, 2021.
+                        </div>
+                        <div class="reference-item">
+                            <strong>[4]</strong> VETORAZZO, Adriana de Souza et al. <em>Estrutura de dados</em> [recurso eletrônico]. 
+                            Revisão técnica: Jeferson Faleiro Leon de Souza Machado. Porto Alegre: SAGAH, 2018.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Prof. William Mendes - Faculdade EDUFOR</p>
+            <p>Simulador Interativo de Estruturas de Dados Lineares Dinâmicas</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
