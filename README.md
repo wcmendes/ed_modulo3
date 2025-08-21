@@ -112,7 +112,6 @@ Material educacional desenvolvido para fins acadêmicos.
 ---
 
 **Prof. William Corrêa Mendes**  
-Faculdade EDUFOR - São Luís do Maranhão  
 Disciplina: Estrutura de Dados - Módulo III
 
 ---
