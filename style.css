@@ -588,16 +588,16 @@ body {
     text-decoration: underline;
 }
 
+
 /* Footer */
-.footer {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+footer {
+    background: #2c3e50;
     color: white;
     text-align: center;
-    padding: 2rem 0;
-    margin-top: 2rem;
+    padding: 2rem;
+    margin-top: 3rem;
 }
+
 
 /* Animações */
 @keyframes slideIn {
