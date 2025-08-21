@@ -123,10 +123,3 @@ Material educacional desenvolvido para fins acadêmicos.
 - [Módulo II - Registros e Vetores](https://wcmendes.github.io/ed_modulo2/)
 - [Módulo III - Estruturas Lineares](https://wcmendes.github.io/ed_modulo3/)
 
-### 📊 Estatísticas do Projeto
-
-- **Estruturas Implementadas**: 3 (Listas, Pilhas, Filas)
-- **Linguagens de Exemplo**: 4 (Pseudocódigo, Python, Java, C)
-- **Operações Disponíveis**: 10+ operações interativas
-- **Compatibilidade**: Todos os navegadores modernos
-
