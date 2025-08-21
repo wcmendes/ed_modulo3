@@ -112,7 +112,8 @@ Material educacional desenvolvido para fins acadêmicos.
 ---
 
 **Prof. William Corrêa Mendes**  
-Disciplina: Estrutura de Dados - Módulo III
+**Currículo Lattes**: [https://lattes.cnpq.br/7726054867638395](https://lattes.cnpq.br/7726054867638395)
+<img width="450" height="450" alt="image" src="https://github.com/user-attachments/assets/99e540cd-3106-47c0-8578-95926730b655" />
 
 ---
 
